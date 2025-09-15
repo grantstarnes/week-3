@@ -20,3 +20,18 @@ def fib(n):
     elif n == 1:
         return 1
     return fib(n - 1) + fib(n - 2)
+
+# Exercise 2: Integer to Binary Conversion
+# Write a recursive function to convert an integer to its binary representation
+
+def to_binary(n):
+    '''
+    This function is responsible for converting an integer n to its binary representation as a string.
+    The function first checks if n is less than 2, in which case it simply returns the string representation 
+    of n (either '0' or '1'). If n is 2 or greater, the function calls itself recursively with the integer floor division
+    of n by 2 (n // 2) and concatenates the result with the string representation of the remainder (modulus) when n is divided by 2 (n % 2).
+    This effectively builds the binary representation from the most significant bit to the least significant bit.
+    '''
+    if n < 2:
+        return str(n)
+    return to_binary(n // 2) + str(n % 2)
