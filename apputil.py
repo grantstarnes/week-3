@@ -35,3 +35,25 @@ def to_binary(n):
     if n < 2:
         return str(n)
     return to_binary(n // 2) + str(n % 2)
+
+# Exercise 3: Bellevue Almshouse Data Analysis
+
+# Extracting the data
+
+
+
+# 3.1: Return a list of all columns sorted by the least missing values to most missing values
+
+
+
+# 3.2: Return a dataframe for each year in the dataset with total number of entries for each year
+
+
+
+# 3.3: Return a series with the index as gender and the values as the average age for the indexed gender
+
+
+
+# 3.4: Return a list of the 5 most common professions in order of prevalence (most common first)
+
+
