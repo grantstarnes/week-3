@@ -66,7 +66,8 @@ def task_ii():
 
 # 3.3: Return a series with the index as gender and the values as the average age for the indexed gender
 
-
+def task_iii():
+    return df_bellevue.groupby('gender')['age'].mean().round(2)
 
 # 3.4: Return a list of the 5 most common professions in order of prevalence (most common first)
 
