@@ -7,7 +7,7 @@ import numpy as np
 # Exercise 1: Fibonacci Sequence Function
 # Write a recursive function to compute the nth Fibonacci number in the series
 
-def fib(n):
+def fibonacci(n):
     ''' This function is responsible for returning the nth Fibonacci number in the series based on the input n.
         For example, if we were to call fib(3), the function would return 2. The function would first check if
         n is equal to 0 or 1, and if not, it essentially skips to the else statement, which returns the the sum of
@@ -19,7 +19,7 @@ def fib(n):
         return 0
     elif n == 1:
         return 1
-    return fib(n - 1) + fib(n - 2)
+    return fibonacci(n - 1) + fibonacci(n - 2)
 
 # Exercise 2: Integer to Binary Conversion
 # Write a recursive function to convert an integer to its binary representation
@@ -46,7 +46,7 @@ df_bellevue = pd.read_csv(url)
 
 # 3.1: Return a list of all columns sorted by the least missing values to most missing values
 
-def task_i():
+def task_1():
     '''
     This function returns a list of column names sorted by the least missing values to most missing values (NaN values).
     It first takes the data in the gender column and cleans it up, replacing any '?' or invalid entries ('h', 'g') with NaN 
@@ -62,7 +62,7 @@ def task_i():
 
 # 3.2: Return a dataframe for each year in the dataset with total number of entries for each year
 
-def task_ii():
+def task_2():
     '''
     This function returns a dataframe that contains the total number of admissions for the disease 'recent emigrant' for each year in the dataset.
     It first converts the 'date_in' column to datetime format using pd.to_datetime(). Then, it extracts the year from the 'date_in' column and creates a new column called 'year'.
@@ -82,7 +82,7 @@ def task_ii():
 
 # 3.3: Return a series with the index as gender and the values as the average age for the indexed gender
 
-def task_iii():
+def task_3():
     '''
     This function returns a pandas Series with the index as gender and the values as the average age for each gender.
     It groups the dataframe by the gender column and calculates the mean age for each, which is then rounded to two decimal places for clarity.
@@ -92,7 +92,7 @@ def task_iii():
 
 # 3.4: Return a list of the 5 most common professions in order of prevalence (most common first)
 
-def task_iv():
+def task_4():
     '''
     This function returns a list of the 5 most common professions in the dataset, ordered from most to least prevalent.
     It uses the value_counts() method on the 'profession' column to count the occurrences of each profession, then selects 
