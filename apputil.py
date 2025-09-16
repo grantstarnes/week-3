@@ -46,11 +46,23 @@ df_bellevue = pd.read_csv(url)
 
 # 3.1: Return a list of all columns sorted by the least missing values to most missing values
 
-
+def task_i():
+    df_bellevue['gender'] = df_bellevue['gender'].replace('?', np.nan).replace('h', np.nan).replace('g', np.nan)
+    nan_count = df_bellevue.isna().sum()
+    nan_sorted = nan_count.sort_values()
+    return nan_sorted.index.tolist()
 
 # 3.2: Return a dataframe for each year in the dataset with total number of entries for each year
 
+def task_ii():
+    df_bellevue['date_in'] = pd.to_datetime(df_bellevue['date_in'])
+    df_bellevue['year'] = df_bellevue['date_in'].dt.year
 
+    recent_emigrant = df_bellevue[df_bellevue['disease'] == 'recent emigrant']
+
+    yearly_admissions = recent_emigrant.groupby('year', as_index=False).size().rename(columns={'size': 'total_admissions'})
+
+    return yearly_admissions
 
 # 3.3: Return a series with the index as gender and the values as the average age for the indexed gender
 
