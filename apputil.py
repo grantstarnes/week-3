@@ -74,9 +74,7 @@ def task_2():
     df_bellevue['date_in'] = pd.to_datetime(df_bellevue['date_in'])
     df_bellevue['year'] = df_bellevue['date_in'].dt.year
 
-    recent_emigrant = df_bellevue[df_bellevue['disease'] == 'recent emigrant']
-
-    yearly_admissions = recent_emigrant.groupby('year', as_index=False).size().rename(columns={'size': 'total_admissions'})
+    yearly_admissions = df_bellevue.groupby('year').size().reset_index(name='total_admissions')
 
     return yearly_admissions
 
