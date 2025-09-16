@@ -71,4 +71,6 @@ def task_iii():
 
 # 3.4: Return a list of the 5 most common professions in order of prevalence (most common first)
 
-
+def task_iv():
+    top_professions = df_bellevue['profession'].value_counts().head().index.tolist()
+    return top_professions
