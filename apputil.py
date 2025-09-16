@@ -1,6 +1,6 @@
 import seaborn as sns
 import pandas as pd
-
+import numpy as np
 
 # update/add code below ...
 
@@ -40,7 +40,9 @@ def to_binary(n):
 
 # Extracting the data
 
+url = 'https://github.com/melaniewalsh/Intro-Cultural-Analytics/raw/master/book/data/bellevue_almshouse_modified.csv'
 
+df_bellevue = pd.read_csv(url)
 
 # 3.1: Return a list of all columns sorted by the least missing values to most missing values
 
