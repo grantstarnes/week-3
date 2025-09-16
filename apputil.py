@@ -47,6 +47,14 @@ df_bellevue = pd.read_csv(url)
 # 3.1: Return a list of all columns sorted by the least missing values to most missing values
 
 def task_i():
+    '''
+    This function returns a list of column names sorted by the least missing values to most missing values (NaN values).
+    It first takes the data in the gender column and cleans it up, replacing any '?' or invalid entries ('h', 'g') with NaN 
+    in order to get an accurate count of missing values, and makes sure gender is simply 'm', 'f', or NaN. It then sums the 
+    number of NaN values in each column using the isna() method followed by sum(). The resulting series of NaN counts is then
+    sorted in ascending order using sort_values(). Finally, the function returns a list of the column names sorted by the number of missing values.
+    '''
+
     df_bellevue['gender'] = df_bellevue['gender'].replace('?', np.nan).replace('h', np.nan).replace('g', np.nan)
     nan_count = df_bellevue.isna().sum()
     nan_sorted = nan_count.sort_values()
@@ -55,6 +63,14 @@ def task_i():
 # 3.2: Return a dataframe for each year in the dataset with total number of entries for each year
 
 def task_ii():
+    '''
+    This function returns a dataframe that contains the total number of admissions for the disease 'recent emigrant' for each year in the dataset.
+    It first converts the 'date_in' column to datetime format using pd.to_datetime(). Then, it extracts the year from the 'date_in' column and creates a new column called 'year'.
+    Next, it filters the dataframe to include only rows where the 'disease' column is equal to 'recent emigrant'.
+    Finally, it groups the filtered dataframe by the 'year' column, counts the number of entries for each year using size(), and renames the resulting column to 'total_admissions'.
+    The function returns the resulting dataframe with two columns: 'year' and 'total_admissions'.
+    '''
+
     df_bellevue['date_in'] = pd.to_datetime(df_bellevue['date_in'])
     df_bellevue['year'] = df_bellevue['date_in'].dt.year
 
@@ -67,10 +83,22 @@ def task_ii():
 # 3.3: Return a series with the index as gender and the values as the average age for the indexed gender
 
 def task_iii():
+    '''
+    This function returns a pandas Series with the index as gender and the values as the average age for each gender.
+    It groups the dataframe by the gender column and calculates the mean age for each, which is then rounded to two decimal places for clarity.
+    '''
+
     return df_bellevue.groupby('gender')['age'].mean().round(2)
 
 # 3.4: Return a list of the 5 most common professions in order of prevalence (most common first)
 
 def task_iv():
+    '''
+    This function returns a list of the 5 most common professions in the dataset, ordered from most to least prevalent.
+    It uses the value_counts() method on the 'profession' column to count the occurrences of each profession, then selects 
+    the top 5 using head(), and finally extracts the index (profession names only) and converts it to a list. We could use
+    head(5) instead of head() since the default is 5, but I wanted to be explicit.
+    '''
+
     top_professions = df_bellevue['profession'].value_counts().head().index.tolist()
     return top_professions
